@@ -28,6 +28,7 @@ int main(int argc, char *argv[]) {
     std::string buf_chislo;
     std::stack<float> numbers;
     std::stack<std::string> action;
+    std::stack<int> prior_pered;
 
     //Перебираю все символы в строке
     for (size_t symbol = 0; symbol != str.size(); symbol++) {
@@ -53,14 +54,17 @@ int main(int argc, char *argv[]) {
                 if ((prioritet.second.end() != std::find(prioritet.second.begin(), prioritet.second.end(),
                                                          buf_operacia))) {
                     if (!action.empty()) {
-                        while ((prioritet.first <= buf_prioritet) && (buf_operacia != "("))  {
-                            Magic(numbers, action, buf_prioritet, buf_operacia);
+                        while ((prioritet.first <= buf_prioritet) )  {
+                            Magic(numbers, action, buf_prioritet, buf_operacia, prior_pered);
                         }
                     }
                     buf_prioritet = prioritet.first;
+
                     if (buf_operacia != ")") {
                         action.push(buf_operacia);
+                        prior_pered.push(prioritet.first);
                     }
+
                     buf_operacia = "";
                     break;
                 }

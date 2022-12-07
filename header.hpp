@@ -7,6 +7,6 @@
 #include <vector>
 #include <stack>
 
-void Magic(std::stack<float> &numbers, std::stack<std::string> &action, int &buf_prioritet, std::string& buf_operacia);
+void Magic(std::stack<float> &numbers, std::stack<std::string> &action, int &buf_prioritet, std::string &buf_operacia, std::stack<int>& prior_pered);
 
 #endif //CALCULATOR_HEADER_HPP
